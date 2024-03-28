@@ -97,7 +97,7 @@ class Tree:
             return None
 
         if s.left is None and s.right is None:
-            self.__del_leaf(s, p,)
+            self.__del_leaf(s, p)
 
         elif s.left is None or s.right is None:
             self.__del_one_child(s, p)
@@ -107,11 +107,28 @@ class Tree:
             s.data = sr.data
             self.__del_one_child(sr, pr)
 
+    def find_node(self, root, key):
+        if root is None:
+            return
 
-v = ["Hello", "Good", "Bye"]
+        if key == root.data:
+            print("Ключ найден: ", root.data)
+            return
+
+        if root.left:
+            self.find_node(root.left, key)
+
+        if root.right:
+            self.find_node(root.right, key)
+
+
+v = [10, 3, 6, 5, 2]
 
 t = Tree()
 for x in v:
     t.append(Node(x))
 
 t.show_wide_tree(t.root)
+
+key = int(input("Введите ключ: "))
+t.find_node(t.root, key)
