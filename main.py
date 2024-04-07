@@ -1,3 +1,6 @@
+import json
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -122,13 +125,23 @@ class Tree:
             self.find_node(root.right, key)
 
 
-v = [10, 3, 6, 5, 2]
-
+with open('my.json', 'r') as file:
+    v = json.load(file)
+print(type(v))
 t = Tree()
 for x in v:
     t.append(Node(x))
 
 t.show_wide_tree(t.root)
 
+number = int(input("Введите значение: "))
+v.append(number)
+t.append(Node(number))
+
+t.show_wide_tree(t.root)
+
 key = int(input("Введите ключ: "))
 t.find_node(t.root, key)
+
+with open('my.json', 'w') as file:
+    json.dump(v, file)
