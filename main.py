@@ -1,5 +1,4 @@
 import json  # Импортируем JSON
-import os
 
 v_can_append = False
 v_can_remove = False
@@ -124,22 +123,6 @@ class Tree:
             self.find_node(root.right, key)
 
 
-def scan_dir(path):
-    file_count = 0
-    catalog_count = 0
-    for file in os.listdir(path):
-        file_path = os.path.join(path, file)
-        if os.path.isfile(file_path):
-            file_count += 1
-        else:
-            catalog_count += 1
-            scan_dir(file_path)
-    print('[', path, ']\n\t', 'files: %s' % file_count, 'catalogs: %s' % catalog_count)
-
-
-if __name__ == '__main__':
-    scan_dir(path=os.getcwd())
-
 # 1. Открываем файл JSON и выгружаем из него данные, затем выводим на экран
 with open('my.json', 'r') as file:
     v = json.load(file)
@@ -172,5 +155,3 @@ t.show_wide_tree(t.root)
 # 5. Сохраняем бинарное дерево в файл JSON
 with open('my.json', 'w') as file:
     json.dump(v, file)
-
-# scan_dir(t.root)
