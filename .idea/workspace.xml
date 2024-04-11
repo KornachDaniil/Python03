@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0af52772-5762-452d-b8c6-81937a9b7bec" name="Changes" comment="Исправлены ошибки при добавлении и удалении из списка v данных из-за несуществования введын пользователем данных в бинарном дереве">
+    <list default="true" id="0af52772-5762-452d-b8c6-81937a9b7bec" name="Changes" comment="Мелкие правки">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my.json" beforeDir="false" afterPath="$PROJECT_DIR$/my.json" afterDir="false" />
@@ -107,7 +107,8 @@
       <workItem from="1712069224378" duration="45000" />
       <workItem from="1712477807944" duration="4056000" />
       <workItem from="1712849769528" duration="4304000" />
-      <workItem from="1712854104779" duration="1763000" />
+      <workItem from="1712854104779" duration="2824000" />
+      <workItem from="1712858163998" duration="425000" />
     </task>
     <task id="LOCAL-00001" summary="Создан проект">
       <option name="closed" value="true" />
@@ -157,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712854642373</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Мелкие правки">
+      <option name="closed" value="true" />
+      <created>1712856002590</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712856002590</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,7 +179,8 @@
     <MESSAGE value="Добавил JSON файл в котором храняться данные бинарного дерева" />
     <MESSAGE value="Мелкие изменения и добавлена возможность удалять ноды" />
     <MESSAGE value="Исправлены ошибки при добавлении и удалении из списка v данных из-за несуществования введын пользователем данных в бинарном дереве" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправлены ошибки при добавлении и удалении из списка v данных из-за несуществования введын пользователем данных в бинарном дереве" />
+    <MESSAGE value="Мелкие правки" />
+    <option name="LAST_COMMIT_MESSAGE" value="Мелкие правки" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -191,6 +201,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Python03$main.coverage" NAME="main Coverage Results" MODIFIED="1711652228798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1712855767980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1712858450556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

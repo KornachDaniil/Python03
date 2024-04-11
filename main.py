@@ -2,6 +2,7 @@ import json  # Импортируем JSON
 
 v_can_append = False
 v_can_remove = False
+array = []
 
 
 class Node:
@@ -52,10 +53,13 @@ class Tree:
         if node is None:
             return
 
+        global array
+        array.clear()
         v = [node]
         while v:
             vn = []
             for x in v:
+                array.append(x.data)
                 print(x.data, end=" ")
                 if x.left:
                     vn += [x.left]
@@ -150,8 +154,13 @@ if v_can_remove is False:
     v.remove(key)
 else:
     print("Данный ключ не найден!")
-t.show_wide_tree(t.root)
 
-# 5. Сохраняем бинарное дерево в файл JSON
+# 5. Выводим дерево на экран, затем очищаем список и заполняем заново, для корректной выгрузки в JSON
+t.show_wide_tree(t.root)
+v.clear()
+for x in array:
+    v.append(x)
+
+# 6. Сохраняем бинарное дерево в файл JSON
 with open('my.json', 'w') as file:
     json.dump(v, file)
