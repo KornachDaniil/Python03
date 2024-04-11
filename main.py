@@ -1,4 +1,8 @@
 import json  # Импортируем JSON
+import os
+
+v_can_append = False
+v_can_remove = False
 
 
 class Node:
@@ -16,6 +20,8 @@ class Tree:
             return None, parent, False
 
         if value == node.data:
+            global v_can_append
+            v_can_append = True
             return node, parent, True
 
         if value < node.data:
@@ -42,15 +48,6 @@ class Tree:
                 s.right = obj
 
         return obj
-
-    def show_tree(self, node):
-        if node is None:
-            return
-
-        self.show_tree(node.left)
-        print(node.data)
-        self.show_tree(node.right)
-        # print(node.data)
 
     def show_wide_tree(self, node):
         if node is None:
@@ -97,6 +94,8 @@ class Tree:
         s, p, fl_find = self.__find(self.root, None, key)
 
         if not fl_find:
+            global v_can_remove
+            v_can_remove = True
             return None
 
         if s.left is None and s.right is None:
@@ -125,6 +124,22 @@ class Tree:
             self.find_node(root.right, key)
 
 
+def scan_dir(path):
+    file_count = 0
+    catalog_count = 0
+    for file in os.listdir(path):
+        file_path = os.path.join(path, file)
+        if os.path.isfile(file_path):
+            file_count += 1
+        else:
+            catalog_count += 1
+            scan_dir(file_path)
+    print('[', path, ']\n\t', 'files: %s' % file_count, 'catalogs: %s' % catalog_count)
+
+
+if __name__ == '__main__':
+    scan_dir(path=os.getcwd())
+
 # 1. Открываем файл JSON и выгружаем из него данные, затем выводим на экран
 with open('my.json', 'r') as file:
     v = json.load(file)
@@ -136,8 +151,9 @@ t.show_wide_tree(t.root)
 
 # 2. Добавляем новую ноду в бинарное дерево
 number = int(input("Введите значение для добавления: "))
-v.append(number)
 t.append(Node(number))
+if v_can_append is False:
+    v.append(number)
 t.show_wide_tree(t.root)
 
 # 3. Производим поиск по ключу и выводим ключ на экран, если найден
@@ -147,9 +163,14 @@ t.find_node(t.root, key)
 # 4. Производим удаление ноды по ключу и выводим дерево на экран
 key = int(input("Введите ключ для удаления: "))
 t.del_node(key)
-v.remove(key)
+if v_can_remove is False:
+    v.remove(key)
+else:
+    print("Данный ключ не найден!")
 t.show_wide_tree(t.root)
 
 # 5. Сохраняем бинарное дерево в файл JSON
 with open('my.json', 'w') as file:
     json.dump(v, file)
+
+# scan_dir(t.root)
