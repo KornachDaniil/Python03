@@ -1,8 +1,6 @@
 import json  # Импортируем JSON
 
 v_can_append = False
-v_can_remove = False
-array = []
 
 
 class Node:
@@ -53,13 +51,10 @@ class Tree:
         if node is None:
             return
 
-        global array
-        array.clear()
         v = [node]
         while v:
             vn = []
             for x in v:
-                array.append(x.data)
                 print(x.data, end=" ")
                 if x.left:
                     vn += [x.left]
@@ -68,49 +63,11 @@ class Tree:
             print()
             v = vn
 
-    def __del_leaf(self, s, p):  # Функция для удаления листьев
-        if p.left == s:
-            p.left = None
-        elif p.right == s:
-            p.right = None
-
-    def __del_one_child(self, s, p):  # Функция для удаления одной ноды
-        if p.left == s:
-            if s.left is None:
-                p.left = s.right
-            elif s.right is None:
-                s.right = s.left
-
-        elif p.right == s:
-            if s.left is None:
-                p.right = s.right
-            elif s.right is None:
-                s.right = s.left
-
-    def __find_min(self, node, parent):
-        if node.left:
-            return self.__find_min(node.left, node)
-
-        return node, parent
-
-    def del_node(self, key):  # Главная функция для удаления элементов бинарного дерева
-        s, p, fl_find = self.__find(self.root, None, key)
-
-        if not fl_find:
-            global v_can_remove
-            v_can_remove = True
-            return None
-
-        if s.left is None and s.right is None:
-            self.__del_leaf(s, p)
-
-        elif s.left is None or s.right is None:
-            self.__del_one_child(s, p)
-
-        else:
-            sr, pr = self.__find_min(s.right, s)
-            s.data = sr.data
-            self.__del_one_child(sr, pr)
+    # def __find_min(self, node, parent):  # Хз зачем это тут
+    #     if node.left:
+    #         return self.__find_min(node.left, node)
+    #
+    #     return node, parent
 
     def find_node(self, root, key):  # Функция для поиска ноды
         if root is None:
@@ -137,30 +94,16 @@ for x in v:
 t.show_wide_tree(t.root)
 
 # 2. Добавляем новую ноду в бинарное дерево
-number = int(input("Введите значение для добавления: "))
+number = input("Введите значение для добавления: ")
 t.append(Node(number))
 if v_can_append is False:
     v.append(number)
 t.show_wide_tree(t.root)
 
 # 3. Производим поиск по ключу и выводим ключ на экран, если найден
-key = int(input("Введите ключ для поиска: "))
-t.find_node(t.root, key)
+# key = input("Введите ключ для поиска: ")
+# t.find_node(t.root, key)
 
-# 4. Производим удаление ноды по ключу и выводим дерево на экран
-key = int(input("Введите ключ для удаления: "))
-t.del_node(key)
-if v_can_remove is False:
-    v.remove(key)
-else:
-    print("Данный ключ не найден!")
-
-# 5. Выводим дерево на экран, затем очищаем список и заполняем заново, для корректной выгрузки в JSON
-t.show_wide_tree(t.root)
-v.clear()
-for x in array:
-    v.append(x)
-
-# 6. Сохраняем бинарное дерево в файл JSON
+# 5. Сохраняем бинарное дерево в файл JSON
 with open('my.json', 'w') as file:
     json.dump(v, file)
