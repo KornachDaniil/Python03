@@ -47,22 +47,6 @@ class Tree:
 
         return obj
 
-    def show_wide_tree(self, node):
-        if node is None:
-            return
-
-        v = [node]
-        while v:
-            vn = []
-            for x in v:
-                print(x.data, end=" ")
-                if x.left:
-                    vn += [x.left]
-                if x.right:
-                    vn += [x.right]
-            print()
-            v = vn
-
     def find_node(self, root, key):  # Функция для поиска ноды
         if root is None:
             return
@@ -123,7 +107,6 @@ print(type(v))
 t = Tree()
 for x in v:
     t.append(Node(x))
-# t.show_wide_tree(t.root)
 print(*t.printTree(t.root), sep="\n")
 
 # 2. Добавляем новую ноду в бинарное дерево
@@ -131,7 +114,6 @@ number = int(input("Введите значение для добавления:
 t.append(Node(number))
 if v_can_append is False:
     v.append(number)
-# t.show_wide_tree(t.root)
 print(*t.printTree(t.root), sep="\n")
 
 # 3. Производим поиск по ключу и выводим ключ на экран, если найден
