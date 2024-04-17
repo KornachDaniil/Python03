@@ -1,4 +1,5 @@
 import json  # Импортируем JSON
+import math
 
 v_can_append = False
 
@@ -83,6 +84,37 @@ class Tree:
         if root.right:
             self.find_node(root.right, key)
 
+    def printTree(self, root):
+        def height(ro):
+            if not ro:
+                return 0
+
+            l = ro.left
+            r = ro.right
+            if height(l) > height(r):
+                return 1 + height(l)
+            else:
+                return 1 + height(r)
+
+        def make(root, i, j):
+            if root:
+                l[i][j] = str(root.data)
+                j_left = int(j - 2 ** (h - i - 1))
+                j_right = int(j + 2 ** (h - i - 1))
+                i = i + 1
+                make(root.left, i, j_left)
+                make(root.right, i, j_right)
+
+        h = height(root) - 1
+        m = h + 1
+        n = 2 ** (m) - 1
+        l = [["" for j in range(n)] for i in range(m)]
+
+        i = 0
+        j = int((n - 1) / 2)
+        make(root, i, j)
+        return l
+
 
 # 1. Открываем файл JSON и выгружаем из него данные, затем выводим на экран
 with open('my.json', 'r') as file:
@@ -91,18 +123,21 @@ print(type(v))
 t = Tree()
 for x in v:
     t.append(Node(x))
-t.show_wide_tree(t.root)
+# t.show_wide_tree(t.root)
+print(*t.printTree(t.root), sep='\n')  # * используется для распаковки элементов списка и передачи их как аргументов функции
 
 # 2. Добавляем новую ноду в бинарное дерево
-number = input("Введите значение для добавления: ")
+number = int(input("Введите значение для добавления: "))
 t.append(Node(number))
 if v_can_append is False:
     v.append(number)
-t.show_wide_tree(t.root)
+#t.show_wide_tree(t.root)
 
 # 3. Производим поиск по ключу и выводим ключ на экран, если найден
 # key = input("Введите ключ для поиска: ")
 # t.find_node(t.root, key)
+
+print(*t.printTree(t.root), sep='\n')  # * используется для распаковки элементов списка и передачи их как аргументов функции
 
 # 5. Сохраняем бинарное дерево в файл JSON
 with open('my.json', 'w') as file:
