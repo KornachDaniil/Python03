@@ -1,5 +1,4 @@
 import json  # Импортируем JSON
-import math
 
 v_can_append = False
 
@@ -64,12 +63,6 @@ class Tree:
             print()
             v = vn
 
-    # def __find_min(self, node, parent):  # Хз зачем это тут
-    #     if node.left:
-    #         return self.__find_min(node.left, node)
-    #
-    #     return node, parent
-
     def find_node(self, root, key):  # Функция для поиска ноды
         if root is None:
             return
@@ -85,35 +78,42 @@ class Tree:
             self.find_node(root.right, key)
 
     def printTree(self, root):
-        def height(ro):
-            if not ro:
-                return 0
+        # GET HEIGHT OF THE TREE
+        def dfs(node, count):
+            if not node:
+                return count
+            return max(dfs(node.left, count + 1), dfs(node.right, count + 1))
 
-            l = ro.left
-            r = ro.right
-            if height(l) > height(r):
-                return 1 + height(l)
-            else:
-                return 1 + height(r)
+        height = dfs(root, -1)
 
-        def make(root, i, j):
-            if root:
-                l[i][j] = str(root.data)
-                j_left = int(j - 2 ** (h - i - 1))
-                j_right = int(j + 2 ** (h - i - 1))
-                i = i + 1
-                make(root.left, i, j_left)
-                make(root.right, i, j_right)
+        # m and n IS PROVIDED FORMULA FROM PROBLEM DESCRIPTION
+        m = height + 1
+        n = (2 ** (m)) - 1
 
-        h = height(root) - 1
-        m = h + 1
-        n = 2 ** (m) - 1
-        l = [["" for j in range(n)] for i in range(m)]
+        # CREATE RESULT
+        result = [["" for x in range(0, n)] for x in range(0, m)]
 
-        i = 0
-        j = int((n - 1) / 2)
-        make(root, i, j)
-        return l
+        # r and c IS PROVIDED FORMULA FROM PROBLEM DESCRIPTION
+        r = 0
+        c = (n - 1) // 2
+
+        def plot(node, r, c):
+            if not node:
+                return
+
+            result[r][c] = str(node.data)
+
+            if node.left:
+                lc = c - (2 ** (height - r - 1))
+                plot(node.left, r + 1, lc)
+
+            if node.right:
+                rc = c + (2 ** (height - r - 1))
+                plot(node.right, r + 1, rc)
+
+        plot(root, r, c)
+
+        return result
 
 
 # 1. Открываем файл JSON и выгружаем из него данные, затем выводим на экран
@@ -124,20 +124,19 @@ t = Tree()
 for x in v:
     t.append(Node(x))
 # t.show_wide_tree(t.root)
-print(*t.printTree(t.root), sep='\n')  # * используется для распаковки элементов списка и передачи их как аргументов функции
+print(*t.printTree(t.root), sep="\n")
 
 # 2. Добавляем новую ноду в бинарное дерево
 number = int(input("Введите значение для добавления: "))
 t.append(Node(number))
 if v_can_append is False:
     v.append(number)
-#t.show_wide_tree(t.root)
+# t.show_wide_tree(t.root)
+print(*t.printTree(t.root), sep="\n")
 
 # 3. Производим поиск по ключу и выводим ключ на экран, если найден
-# key = input("Введите ключ для поиска: ")
-# t.find_node(t.root, key)
-
-print(*t.printTree(t.root), sep='\n')  # * используется для распаковки элементов списка и передачи их как аргументов функции
+key = int(input("Введите ключ для поиска: "))
+t.find_node(t.root, key)
 
 # 5. Сохраняем бинарное дерево в файл JSON
 with open('my.json', 'w') as file:

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0af52772-5762-452d-b8c6-81937a9b7bec" name="Changes" comment="">
+    <list default="true" id="0af52772-5762-452d-b8c6-81937a9b7bec" name="Changes" comment="Добавил вывод в виде бинарного дерева, работает с числами точно и корректно">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my.json" beforeDir="false" afterPath="$PROJECT_DIR$/my.json" afterDir="false" />
@@ -118,7 +118,7 @@
       <workItem from="1712990312616" duration="3224000" />
       <workItem from="1712997583583" duration="22000" />
       <workItem from="1713346930516" duration="493000" />
-      <workItem from="1713347824329" duration="1009000" />
+      <workItem from="1713347824329" duration="3084000" />
     </task>
     <task id="LOCAL-00001" summary="Создан проект">
       <option name="closed" value="true" />
@@ -184,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712858615903</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Добавил вывод в виде бинарного дерева, работает с числами точно и корректно">
+      <option name="closed" value="true" />
+      <created>1713349074161</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1713349074161</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,7 +207,8 @@
     <MESSAGE value="Исправлены ошибки при добавлении и удалении из списка v данных из-за несуществования введын пользователем данных в бинарном дереве" />
     <MESSAGE value="Мелкие правки" />
     <MESSAGE value="Исправлена ошибка с некорректным сохранением списка v в JSON файл" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправлена ошибка с некорректным сохранением списка v в JSON файл" />
+    <MESSAGE value="Добавил вывод в виде бинарного дерева, работает с числами точно и корректно" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил вывод в виде бинарного дерева, работает с числами точно и корректно" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -220,6 +229,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Python03$main.coverage" NAME="main Coverage Results" MODIFIED="1711652228798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1713348763181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1713352268297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
