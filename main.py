@@ -62,7 +62,6 @@ class Tree:
             self.find_node(root.right, key)
 
     def printTree(self, root):
-        # GET HEIGHT OF THE TREE
         def dfs(node, count):
             if not node:
                 return count
@@ -70,14 +69,11 @@ class Tree:
 
         height = dfs(root, -1)
 
-        # m and n IS PROVIDED FORMULA FROM PROBLEM DESCRIPTION
         m = height + 1
         n = (2 ** (m)) - 1
 
-        # CREATE RESULT
         result = [["" for x in range(0, n)] for x in range(0, m)]
 
-        # r and c IS PROVIDED FORMULA FROM PROBLEM DESCRIPTION
         r = 0
         c = (n - 1) // 2
 
